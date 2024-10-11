@@ -10,7 +10,8 @@ jobs:
     permissions:
       contents: write
       packages: write
-
+      id-token: write
+     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4 #descarga el repositorio en el ejecutor
