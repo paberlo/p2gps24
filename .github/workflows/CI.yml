@@ -24,7 +24,7 @@ jobs:
             settings-path: ${{ github.workspace }} # location for the settings.xml file
           
       #### BUILDS ######
-      - uses: gradle/gradle/actions/setup-gradle@v3
+      - uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 2.1  #la última versión de v2 usa cache y da problemas de dependencias con el build
                
