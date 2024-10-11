@@ -17,7 +17,7 @@ services:
       - "28017:28017" # mapeo el Puerto del contenedor (derecha) con el puerto  del host del servicio
       - "27017:27017"
     volumes:
-      - "db-data:/data/db" # para dar persistencia a la sesión
+      - "db-data:/data/db" # para guardar en local los cambios en el contenedor
   order:
     image: paberlo/p2gps24:order
     depends_on:
