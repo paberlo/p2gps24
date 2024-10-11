@@ -26,7 +26,7 @@ jobs:
       #### BUILDS ######
       - uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 2.1  #la última versión de v2 usa cache y da problemas de dependencias con el build
+          gradle-version: 2.1 
                
       - name: build del Front
         working-directory: src/Clients
