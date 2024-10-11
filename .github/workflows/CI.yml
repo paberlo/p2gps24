@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4 #descarga el repositorio en el ejecutor
 
       - name: Set up JDK 8
-        uses: actions/setup-java@v3 
+        uses: actions/setup-java@v4 
         with:
             java-version: '8'
             distribution: 'adopt'
@@ -24,9 +24,9 @@ jobs:
             settings-path: ${{ github.workspace }} # location for the settings.xml file
           
       #### BUILDS ######
-      - uses: gradle/gradle-build-action@v2.6.0 #la última versión de v2 usa cache y da problemas de dependencias con el build
+      - uses: gradle/gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 2.1
+          gradle-version: 2.1  #la última versión de v2 usa cache y da problemas de dependencias con el build
                
       - name: build del Front
         working-directory: src/Clients
