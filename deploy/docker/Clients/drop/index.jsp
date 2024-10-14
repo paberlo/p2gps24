@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <%
      
-	response.sendRedirect("p2gps-idunico.********.azurewebsites.net/mrp");
+	response.sendRedirect("p2gps67145-ckhqeddtd8feazeh.spaincentral-01.azurewebsites.net/mrp");
 %>
