@@ -77,4 +77,4 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            az webapp start --name p2gps24 --resource-group recursosGPS
+            az webapp start --name p2gps67145 --resource-group recursosGPS
