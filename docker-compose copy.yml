@@ -3,18 +3,6 @@ services:
 # ahora se indican los servicios por el orden en que se quiere que se inicien. 
 #Por ejemplo, mongo debe estar antes de order.
 #mongo: mismo nombre usado en el run.sh de Order y application.properties. #Se resuelve en una dirección IP.
-  web:
-    image: paberlo/p2gps24:web
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "0.25"
-          #memory: 300M
-      restart_policy:
-        condition: none
-    ports:
-      - "80:8080"  
   mongo: 
     image: paberlo/p2gps24:db
     deploy:
@@ -22,14 +10,14 @@ services:
       resources:
         limits:
           cpus: "0.15"
-          #memory: 200M
+          memory: 200M
       restart_policy:
-        condition: none #reinicar el contenedor si falla
+        condition: on-failure #reinicar el contenedor si falla
     ports:
       - "28017:28017" # mapeo el Puerto del contenedor (derecha) con el puerto  del host del servicio
       - "27017:27017"
     volumes:
-      - "db-data:/data/db/" # para guardar en local los cambios en el contenedor
+      - "db-data:/data/db" # para guardar en local los cambios en el contenedor
   order:
     image: paberlo/p2gps24:order
     depends_on:
@@ -38,17 +26,23 @@ services:
       replicas: 1
       resources:
         limits:
-          cpus: "1"
-          #memory: 500M
+          cpus: "0.3"
+          memory: 500M
       restart_policy:
-        condition: none
+        condition: on-failure
     ports:
       - "8080:8080"
-  
-volumes:
-  db-data:
- #   driver: azure_file
- #   driver_opts:
- #    share_name: db-data
- #    storage_account_name: almacengps67145
-
+  web:
+    image: paberlo/p2gps24:web
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 300M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:8080"  
+volumes: 
+   db-data:
